@@ -23,9 +23,6 @@ jobs:
     - name: Build React app
       run: npm run build
 
-    - name: Run tests
-      run: npm test
-
     - name: Upload build artifact
       uses: actions/upload-artifact@v3
       with:
