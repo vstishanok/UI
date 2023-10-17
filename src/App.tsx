@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     // Выполняем запрос к веб-API для получения погоды
-    fetch('http://localhost:5008/WeatherForecast', {
+    fetch('/WeatherForecast', {
       mode: 'no-cors',
       method: 'GET'
     })
