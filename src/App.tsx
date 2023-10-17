@@ -8,14 +8,13 @@ function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    // Выполняем запрос к веб-API для получения погоды
     fetch('/WeatherForecast', {
       mode: 'no-cors',
       method: 'GET'
     })
-        .then(response => response.json())
+        .then(response => response.text())
         .then(data => {
-          setMessage(data.weather);
+          setMessage(data);
         })
         .catch(error => {
           console.error("Error", error);
