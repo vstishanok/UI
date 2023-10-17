@@ -23,11 +23,17 @@ jobs:
     - name: Build React app
       run: npm run build
 
+    - name: Display structure of downloaded files
+      run: ls -R $PWD/*
+
     - name: Upload build artifact
       uses: actions/upload-artifact@v3
       with:
         name: reactapp
         path: build/
+
+    - name: Display structure of downloaded files
+      run: ls -R $PWD/*
 
   deploy:
     needs: build
