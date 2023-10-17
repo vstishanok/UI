@@ -3,9 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-	const response = await fetch(
-		'/WeatherForecast',
-  );
+	const response = fetch('/WeatherForecast');
 
   return (
     <div className="App">
