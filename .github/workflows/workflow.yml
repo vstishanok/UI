@@ -54,7 +54,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          port: 22
+          port: ${{ secrets.SSH_PORT }}
           script: |
             export XDG_RUNTIME_DIR=/run/user/$(id -u)
             systemctl --user stop app.service
