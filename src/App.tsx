@@ -3,13 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-	const response = fetch('/WeatherForecast');
+  const weather = fetch('/WeatherForecast');
+  const message = "Today is " + weather;
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p> `Today is  ${response}!`</p>
+        <p>{message}!</p>
         <a
           className="App-link"
           href="https://reactjs.org"
