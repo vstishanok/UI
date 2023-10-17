@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
+
 function App() {
-  const weather = fetch('/WeatherForecast');
-  const message = "Today is " + weather;
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    // Выполняем запрос к веб-API для получения погоды
+    fetch('http://localhost:5008/WeatherForecast', {
+      mode: 'no-cors',
+      method: 'GET'
+    })
+        .then(response => response.json())
+        .then(data => {
+          setMessage(data.weather);
+        })
+        .catch(error => {
+          console.error("Error", error);
+          setMessage("Not found wheaher");
+        });
+  }, []);
+
+
 
   return (
     <div className="App">
