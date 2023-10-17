@@ -28,3 +28,48 @@ jobs:
       with:
         name: reactapp
         path: build/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+
+      - name: Set up SSH key
+        run: |
+          env
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p 22 -t ed25519 ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Stop application on server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            export XDG_RUNTIME_DIR=/run/user/$(id -u)
+            systemctl --user stop app.service
+
+      - name: Deploy to server
+        run: |
+          rsync -azP -e "ssh -i $HOME/.ssh/id_ed25519 -p 22" ./reactapp ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/
+
+      - name: Start application on server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            export XDG_RUNTIME_DIR=/run/user/$(id -u)
+            systemctl --user start app.service
