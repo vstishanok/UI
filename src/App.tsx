@@ -17,7 +17,6 @@ function App() {
           setMessage(data);
         })
         .catch(error => {
-          console.error("Error", error);
           setMessage("Not found wheaher");
         });
   }, []);
