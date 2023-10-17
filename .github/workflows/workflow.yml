@@ -40,6 +40,9 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
 
+      - name: Display structure of downloaded files
+        run: ls -R $PWD/*
+
       - name: Set up SSH key
         run: |
           env
