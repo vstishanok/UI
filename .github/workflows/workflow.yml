@@ -37,6 +37,11 @@ jobs:
     - name: Run UnitTests
       run: npm run test
 
+    - name: Run linter
+    - run: npm ci
+    - run: npm run lint
+    - run: npm run prettier
+
     - name: Display structure of downloaded files
       run: ls -R $PWD/*
 
