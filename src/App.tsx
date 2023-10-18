@@ -14,7 +14,7 @@ function App() {
     })
         .then(response => response.text())
         .then(data => {
-          setMessage(data);
+          setMessage("Tolay is " + data);
         })
         .catch(error => {
           setMessage("Not found wheaher");
