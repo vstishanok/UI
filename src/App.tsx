@@ -8,7 +8,7 @@ function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch('http://localhost:5000/WeatherForecast', {
+    fetch('http://128.140.64.209:5000/WeatherForecast', {
       mode: 'no-cors',
       method: 'GET'
     })
