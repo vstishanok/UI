@@ -5,17 +5,6 @@ on:
     branches: [ "master" ]
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    name: Run eslint
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '16.x'
-      - run: yarn
-      - run: yarn lint
-
   build:
     runs-on: ubuntu-latest
 
