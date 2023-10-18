@@ -29,6 +29,9 @@ jobs:
     - name: Display structure of downloaded files
       run: ls -R $PWD/*
 
+    - name: Check directory
+      run: pwd
+
     - name: Run linter
       run: yarn run eslint . --ext .ts,.tsx
 
