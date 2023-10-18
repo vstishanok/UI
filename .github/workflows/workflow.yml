@@ -32,7 +32,7 @@ jobs:
        DEFAULT_WORKSPACE: ./reactapp
        DEFAULT_BRANCH: master
        VALIDATE_ALL_CODEBASE: true
-       VALIDATE_DOTNET_DOTNET_FORMAT: true
+       VALIDATE_JAVASCRIPT_ES: true
        VALIDATE_YAML: false
        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
 
