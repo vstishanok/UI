@@ -10,7 +10,7 @@ function App() {
     fetch('http://128.140.64.209:5000/WeatherForecast')
         .then(response => response.json())
         .then(data => {
-          setMessage("Tolay is " + data.wheater);
+          setMessage("Today is " + data.weather);
         })
         .catch(error => {
           setMessage("Not found wheaher");
@@ -24,11 +24,11 @@ function App() {
         <p>{message}!</p>
         <a
           className="App-link"
-          href="https://weather.com/"
+          href="https://www.accuweather.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn Weather
         </a>
       </header>
     </div>

@@ -20,20 +20,17 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Build React app
+    - name: Build
       run: npm run build
-
-    - name: Display structure of downloaded files
-      run: ls -R $PWD/*
+      
+    - name: Test
+      run: npm run test
 
     - name: Upload build artifact
       uses: actions/upload-artifact@v3
       with:
         name: reactapp
         path: build/
-
-    - name: Display structure of downloaded files
-      run: ls -R $PWD/*
 
   deploy:
     needs: build
