@@ -26,6 +26,9 @@ jobs:
     - name: Run UnitTests
       run: npm run test
 
+    - name: Display structure of downloaded files
+      run: ls -R $PWD/*
+
     - name: Run lint
       uses: super-linter/super-linter@v5
       env:
