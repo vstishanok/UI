@@ -29,11 +29,12 @@ jobs:
     - name: Display structure of downloaded files
       run: ls -R $PWD/*
 
+    - name: install
+      run: yarn install
+    - name: ESLint
+      run: yarn run fix .
     - name: Prettier
-      run: npm run format
-
-    - name: Lint
-      run: npm run lint
+      run: yarn prettier --write .
 
     - name: Upload build artifact
       uses: actions/upload-artifact@v3
