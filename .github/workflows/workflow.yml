@@ -38,9 +38,11 @@ jobs:
       run: npm run test
 
     - name: Run linter
-    - run: npm ci
-    - run: npm run lint
-    - run: npm run prettier
+      run: npm ci
+    - name: Run linter
+      run: npm run lint
+    - name: Run linter
+      run: npm run prettier
 
     - name: Display structure of downloaded files
       run: ls -R $PWD/*
