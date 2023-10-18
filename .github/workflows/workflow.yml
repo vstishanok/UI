@@ -32,7 +32,7 @@ jobs:
     - name: Run lint
       uses: super-linter/super-linter@v5
       env:
-       DEFAULT_WORKSPACE: UI/
+       DEFAULT_WORKSPACE: UI/UI/build
        DEFAULT_BRANCH: master
        VALIDATE_ALL_CODEBASE: true
        VALIDATE_TYPESCRIPT_STANDARD: true
