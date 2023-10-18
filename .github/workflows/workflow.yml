@@ -29,6 +29,9 @@ jobs:
     - name: Display structure of downloaded files
       run: ls -R $PWD/*
 
+    - name: Prettier
+      run: npm run format
+
     - name: Lint
       run: npm run lint
 
