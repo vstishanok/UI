@@ -32,9 +32,6 @@ jobs:
     - name: Check directory
       run: pwd
 
-    - name: Check files
-      run: ll
-
     - name: Run linter
       run: yarn run eslint .src --ext .ts,.tsx
 
