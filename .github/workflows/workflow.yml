@@ -20,11 +20,21 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Build
+    - name: Run build
       run: npm run build
       
-    - name: Test
+    - name: Run UnitTests
       run: npm run test
+
+    - name: Run lint
+      uses: super-linter/super-linter@v5
+      env:
+       DEFAULT_WORKSPACE: ./reactapp
+       DEFAULT_BRANCH: master
+       VALIDATE_ALL_CODEBASE: true
+       VALIDATE_DOTNET_DOTNET_FORMAT: true
+       VALIDATE_YAML: false
+       GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
 
     - name: Upload build artifact
       uses: actions/upload-artifact@v3
