@@ -24,7 +24,7 @@ function App() {
         <p>{message}!</p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://weather.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
