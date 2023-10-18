@@ -2,26 +2,20 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-
-
 function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch('http://128.140.64.209:5000/WeatherForecast', {
-      mode: 'no-cors',
-      method: 'GET'
-    })
-        .then(response => response.text())
+
+    fetch('http://128.140.64.209:5000/WeatherForecast')
+        .then(response => response.json())
         .then(data => {
-          setMessage("Tolay is " + data);
+          setMessage("Tolay is " + data.wheater);
         })
         .catch(error => {
           setMessage("Not found wheaher");
         });
   }, []);
-
-
 
   return (
     <div className="App">
