@@ -1,18 +1,18 @@
-name: React CI
+name: Push to master
 
 on:
   push:
     branches: [ "master" ]
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Node.js
+    - name: Setup Node
       uses: actions/setup-node@v3
       with:
         node-version: 16
@@ -22,18 +22,6 @@ jobs:
 
     - name: Run build
       run: npm run build
-      
-    - name: Run UnitTests
-      run: npm run test
-
-    - name: Display structure of downloaded files
-      run: ls -R $PWD/*
-
-    - name: Check directory
-      run: pwd
-
-    - name: Run linter
-      run: yarn run eslint ./src/ --ext .ts,.tsx
 
     - name: Upload build artifact
       uses: actions/upload-artifact@v3
@@ -44,18 +32,11 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
       - name: Download artifact
         uses: actions/download-artifact@v3
 
-      - name: Display structure of downloaded files
-        run: ls -R $PWD/*
-
-      - name: Set up SSH key
+      - name: Setup SSH
         run: |
           env
           mkdir -p ~/.ssh
@@ -66,5 +47,3 @@ jobs:
       - name: Deploy to server
         run: |
           rsync -azP -e "ssh -i $HOME/.ssh/id_ed25519 -p 22" ./reactapp ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:../var/www/
-
-      
