@@ -1,4 +1,4 @@
-name: React CI
+name: Create pull request
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Node.js
+    - name: Setup Node
       uses: actions/setup-node@v3
       with:
         node-version: 16
@@ -23,7 +23,7 @@ jobs:
     - name: Run build
       run: npm run build
       
-    - name: Run UnitTests
+    - name: Run Unit tests
       run: npm run test
 
     - name: Run linter
